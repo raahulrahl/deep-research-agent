@@ -1,0 +1,289 @@
+id: deep-research-v1
+name: deep-research
+version: 1.0.0
+author: paras25619@gmail.com
+
+# Description
+description: |
+  An AI-powered deep research skill that performs comprehensive, multi-step research
+  with automatic citation tracking and structured output. This skill enables advanced
+  research capabilities using Exa research tools for discovering sources, validating
+  information, and synthesizing accurate insights from complex topics.
+
+# Tags and Modes
+tags:
+  - deep-research
+  - citation-tracking
+  - exa-tools
+  - research-analysis
+  - structured-output
+  - web-research
+  - fact-checking
+  - data-synthesis
+  - academic-research
+  - market-research
+
+input_modes:
+  - text/plain
+  - application/json
+
+output_modes:
+  - text/plain
+  - application/json
+  - text/markdown
+
+# Example Queries
+examples:
+  - "Perform comprehensive research on quantum computing advancements in 2024 with citations"
+  - "Research the impact of AI regulation on global tech companies. Use structured output schema"
+  - "Analyze market trends in renewable energy storage technologies with citation tracking"
+  - "Conduct deep research on mRNA vaccine technology developments with academic citations"
+  - "Research competitive landscape of electric vehicle manufacturers with financial data"
+  - "Analyze geopolitical implications of semiconductor supply chain disruptions"
+  - "Perform comprehensive literature review on climate change adaptation strategies"
+  - "Research emerging trends in generative AI applications across different industries"
+
+# Requirements
+requirements:
+  packages:
+    - agno>=2.2.0
+    - exa-py>=2.0.0
+    - openai>=2.11.0
+    - python-dotenv>=1.0.1
+  system: []
+  min_memory_mb: 512
+  external_services:
+    - Exa API (for research and citation tracking)
+    - OpenAI API or OpenRouter API (for LLM capabilities)
+
+# Performance Metrics
+performance:
+  avg_processing_time_ms: 8000
+  max_concurrent_requests: 3
+  memory_per_request_mb: 512
+  scalability: horizontal
+
+# Tool Restrictions
+allowed_tools:
+  - Research
+  - Think
+  - Analyze
+  - Reason
+  - Extract
+  - ExaTools
+  - ReasoningTools
+
+# Rich Documentation
+documentation:
+  overview: |
+    This skill specializes in deep, comprehensive research using Exa's advanced research
+    capabilities. It automatically tracks citations, validates sources, and provides
+    structured outputs. The skill follows a multi-step research methodology that
+    includes planning, source discovery, analysis, and synthesis with proper academic
+    citation practices.
+
+  use_cases:
+    when_to_use:
+      - Complex research requiring multiple sources and verification
+      - Academic or professional research with citation requirements
+      - Market analysis and competitive intelligence
+      - Technology trend analysis with data validation
+      - Policy research requiring evidence-based conclusions
+      - Scientific literature review and synthesis
+      - Business intelligence and strategic research
+
+    when_not_to_use:
+      - Simple fact-checking or quick lookups
+      - Real-time news or current events
+      - Personal opinions or subjective analysis
+      - Mathematical calculations or data processing
+      - Code generation or technical troubleshooting
+
+  input_structure: |
+    Accepts research queries with optional schema specifications:
+
+    {
+      "query": "Research topic or question",
+      "schema": {"type": "object", "properties": {...}},  # Optional structured output schema
+      "depth": "quick|standard|comprehensive",
+      "sources_required": 5,
+      "citation_format": "apa|mla|chicago"
+    }
+
+    Constraints:
+    - Max query length: 500 characters
+    - Max sources per query: 25
+    - Timeout: 180 seconds
+    - Language: English primary
+
+  output_format: |
+    Structured Research Output:
+    {
+      "success": true,
+      "research_report": {
+        "title": "Generated research title",
+        "executive_summary": "Brief overview of findings...",
+        "methodology": "Research approach and tools used...",
+        "findings": [
+          {
+            "section": "Section title",
+            "content": "Detailed findings...",
+            "citations": [{"source": "URL", "title": "Source title", "relevance": 0.95}]
+          }
+        ],
+        "data_tables": [
+          {
+            "title": "Table title",
+            "headers": ["Column 1", "Column 2"],
+            "rows": [
+              {"data": ["Value 1", "Value 2"], "citations": ["citation_ref"]}
+            ]
+          }
+        ],
+        "conclusions": "Evidence-based conclusions...",
+        "recommendations": "Actionable recommendations...",
+        "limitations": "Research scope and limitations..."
+      },
+      "citations": [
+        {
+          "id": "citation_1",
+          "url": "source_url",
+          "title": "article_title",
+          "author": "author_name",
+          "date": "publication_date",
+          "relevance_score": 0.92,
+          "summary": "Key points from source"
+        }
+      ],
+      "metadata": {
+        "query": "original_query",
+        "processing_time_ms": 8500,
+        "sources_analyzed": 18,
+        "sources_used": 12,
+        "confidence_score": 0.89,
+        "research_depth": "comprehensive"
+      }
+    }
+
+  error_handling:
+    - "Insufficient sources: Adjusts research strategy or returns available findings"
+    - "Complex query timeout: Returns intermediate results with completion status"
+    - "Schema validation error: Falls back to standard structured output"
+    - "API limitations: Queues research or suggests simplifying query"
+    - "Conflicting information: Presents multiple perspectives with source credibility"
+
+  examples:
+    - title: "Quantum Computing Research"
+      input:
+        query: "Research recent advancements in quantum computing error correction"
+        depth: "comprehensive"
+        sources_required: 15
+      output:
+        success: true
+        research_report:
+          title: "Advances in Quantum Error Correction: 2023-2024 Review"
+          executive_summary: "Significant progress in quantum error correction techniques..."
+          findings: [...]
+        citations: [...]
+        metadata:
+          processing_time_ms: 12500
+          sources_analyzed: 22
+
+    - title: "Market Analysis Research"
+      input:
+        query: "Analyze competitive landscape in electric vehicle battery technology"
+        schema: {"type": "object", "properties": {"companies": {}, "technologies": {}, "market_share": {}}}
+      output:
+        success: true
+        research_report:
+          title: "EV Battery Technology Competitive Analysis"
+          executive_summary: "Dominant players and emerging technologies in EV battery market..."
+          findings: [...]
+        citations: [...]
+        metadata:
+          processing_time_ms: 9800
+          sources_analyzed: 16
+
+  best_practices:
+    for_developers:
+      - "Specify output schemas for structured data extraction"
+      - "Use depth parameter to control research intensity"
+      - "Set reasonable source limits based on topic complexity"
+      - "Implement caching for frequently researched topics"
+      - "Monitor API usage and implement rate limiting"
+      - "Validate citation quality and relevance scores"
+
+    for_orchestrators:
+      - "Route complex research queries to this agent"
+      - "Chain with summarization agents for executive briefings"
+      - "Consider longer timeouts for comprehensive research"
+      - "Use for evidence-based decision support"
+      - "Monitor source diversity to avoid bias"
+      - "Implement quality checks on citation relevance"
+
+  installation: |
+    Required packages:
+    pip install agno exa-py openai python-dotenv
+
+    Environment variables:
+    EXA_API_KEY=your_exa_api_key                # Required
+    OPENAI_API_KEY=your_openai_api_key          # OR
+    OPENROUTER_API_KEY=your_openrouter_api_key  # Alternative to OpenAI
+
+  versioning:
+    - version: "1.0.0"
+      date: "2026-01-11"
+      changes: "Initial release with Exa research integration, citation tracking, and structured output"
+
+# Assessment fields for skill negotiation
+assessment:
+  keywords:
+    - research
+    - deep research
+    - comprehensive
+    - citation
+    - citation tracking
+    - exa
+    - structured output
+    - academic research
+    - market research
+    - analysis
+    - synthesis
+    - fact checking
+    - sources
+    - evidence
+
+  specializations:
+    - domain: technology_research
+      confidence_boost: 0.3
+    - domain: market_analysis
+      confidence_boost: 0.3
+    - domain: scientific_research
+      confidence_boost: 0.2
+    - domain: policy_research
+      confidence_boost: 0.2
+
+  anti_patterns:
+    - "simple question"
+    - "quick answer"
+    - "opinion"
+    - "personal advice"
+    - "mathematical calculation"
+    - "code generation"
+    - "real-time events"
+    - "live updates"
+
+  complexity_indicators:
+    simple:
+      - "basic research"
+      - "few sources required"
+      - "simple topic"
+    medium:
+      - "moderate research"
+      - "multiple perspectives"
+      - "structured output needed"
+    complex:
+      - "comprehensive research"
+      - "academic citations required"
+      - "complex schema output"
+      - "multiple validation steps"

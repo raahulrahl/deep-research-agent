@@ -1,0 +1,27 @@
+services:
+  deep_research_agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    container_name: deep_research_agent
+    ports:
+      - "3773:3773"
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      
+
+    env_file:
+      - .env
+    volumes:
+      - ./deep_research_agent:/app/deep_research_agent
+      - ./agent_config.json:/app/agent_config.json
+    restart: unless-stopped
+    networks:
+      - deep_research_agent-network
+    
+
+networks:
+  deep_research_agent-network:
+    driver: bridge
+
+
