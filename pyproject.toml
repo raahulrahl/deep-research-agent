@@ -2,12 +2,11 @@
 name = "deep-research-agent"
 version = "0.1.0"
 description = "An AI-powered agent that performs deep, multi-step research with automatic citation tracking and structured output using Exa research tools."
-authors = [{ name = "Paras Chamoli", email = "paras25619@gmail.com" }]
+authors = [{ name = "Paras Chamoli", email = "paras@getbindu.com" }]
 readme = "README.md"
 keywords = ['python', 'research', 'ai', 'exa', 'citation-tracking']
 requires-python = ">=3.12,<3.13"
 dependencies = [
-    "bindu==2026.9.2.2",
     "agno>=2.2.0",
     "requests>=2.31.0",
     "rich>=13.0.0",
@@ -16,6 +15,8 @@ dependencies = [
     "python-dotenv>=1.0.1",
     "sqlalchemy>=2.0.44",
     "mem0ai>=1.0.1",
+    "bindu==2026.9.4",
+    "pre-commit>=4.5.1",
 ]
 classifiers = [
     "Intended Audience :: Developers",
