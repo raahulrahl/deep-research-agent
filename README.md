@@ -24,8 +24,6 @@
 
 ---
 
-[Postman Collection](https://raahul-1409c5b4-717533.postman.co/workspace/getbindu's-Workspace~44eb7cfe-a752-4114-8a1a-631395f07bf1/collection/50606358-9ece2068-4565-44ce-ab84-8875bf4de827?action=share&creator=50606358)
-
 ## 🎯 What is Deep Research Agent?
 
 An AI-powered research analyst that performs comprehensive, multi-step investigations with automatic citation tracking. Think of it as having a team of research assistants who automatically discover sources, validate information, and synthesize accurate, structured insights from complex topics.
