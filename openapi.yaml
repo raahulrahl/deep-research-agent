@@ -2,10 +2,10 @@ openapi: 3.1.0
 info:
   title: Deep Research Agent API
   description: |
-    AI-powered deep research agent that performs comprehensive web-based research with automatic 
+    AI-powered deep research agent that performs comprehensive web-based research with automatic
     citation tracking and structured markdown output using Exa research tools and reasoning capabilities.
 
-    A2A Protocol compliant API for Bindu agents supporting JSON-RPC 2.0 methods for agent communication, 
+    A2A Protocol compliant API for Bindu agents supporting JSON-RPC 2.0 methods for agent communication,
     task management, context management, DID resolution, and payment processing.
 
     ## Why Task-First Architecture?
